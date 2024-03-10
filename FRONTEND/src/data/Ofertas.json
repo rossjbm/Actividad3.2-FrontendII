@@ -1,0 +1,23 @@
+[
+    {
+        "id":1,
+        "imagen": "https://www.infobae.com/new-resizer/JSigyxlGx_G2D-A1YVRvZiwuoec=/filters:format(webp):quality(85)/s3.amazonaws.com/arc-wordpress-client-uploads/infobae-wp/wp-content/uploads/2019/05/20152451/Mandarin-Oriental-Hong-Kong-3.jpg",
+        "nombre": "30% de Descuento en Todo Marzo",
+        "descripcion": "Aprovecha este mes entero para alojarte con un descuento increible en nuestras habitaciones",
+        "limite": "30-03-24"
+    },
+    {
+        "id":2,
+        "imagen": "https://media.gq.com.mx/photos/620e915c43f71a078a35533f/master/pass/playa.jpg",
+        "nombre": "Promoción 2x1 de Semana Santa",
+        "descripcion": "Aprovecha nuestro 2x1 por semana santa, ven en familia a nuestro hotel disfruta de una buena estadia y excelente servicio",
+        "limite": "24-04-24"
+    },
+    {
+        "id":3,
+        "imagen": "https://www.guiarepsol.com/content/dam/repsol-guia/contenidos-imagenes/comer/cultura-gastronomica/el-desayuno-de-hotel-mas-alla-del-bufe/gr-cms-media-featured_images-none-c58d3bd2-57c8-4094-941e-f29f1599a756-1.jpg",
+        "nombre": "10% de Descuento en Servicios de Comida",
+        "descripcion": "Tenemos descuentos en nuestros mejores servicios de comida ahora mismo aprovechalos",
+        "limite": "10-05-24"
+    }
+]

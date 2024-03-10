@@ -1,0 +1,44 @@
+[
+    {
+        "id":1,
+        "imagen": "https://images.mirai.com/INFOROOMS/10030559/NzLXA8mGnfQhLUeZXSKJ/NzLXA8mGnfQhLUeZXSKJ_large.jpg",
+        "nombre": "Habitación Individual",
+        "precio": 50,
+        "descripcion": "Cuenta con camas individuales especiales para vacacionar con tus amigos, disfrutando todos de compañía y privacidad. Incluye dos baños, un minibar, una vista espectacular."
+    },
+    {
+        "id":2,
+        "imagen": "https://media-cdn.tripadvisor.com/media/photo-s/0d/20/fc/73/habitacion-matrimonial.jpg",
+        "nombre": "Habitación Matrimonial",
+        "precio": 350,
+        "descripcion": "Fue pensada para Lunas de Miel, para esas parejas enamoradas que desean vivir su amor en el paraíso de HazbinHotel. Cuenta con servicio personalizado, baño espacioso, jacuzzi y un minibar."
+    },
+    {
+        "id":3,
+        "imagen": "https://www.santuariohotel.com/wp-content/uploads/2019/01/GaleriaHabitacion2.jpg",
+        "nombre": "Habitación Familiar",
+        "precio": 250,
+        "descripcion": "Espectacular si deseas vacacionar en familia, es un lugar espacioso, con todas las comodidades necesarias para cada miembro. Cuenta con un baño y acceso a apartos electrónicos."
+    },
+    {
+        "id":4,
+        "imagen": "https://www.isabelhotelunico.com/images/k-01.jpg",
+        "nombre": "Habitación KING",
+        "precio": 150,
+        "descripcion": "Cuenta con una gran comodidad, WiFi de alta velocidad totalmente incluido en su reservación. Tiene un minibar, baño y escritorio."
+    },
+    {
+        "id":5,
+        "imagen": "https://www.santuariohotel.com/wp-content/uploads/2019/01/GaleriaHabitacion3.jpg",
+        "nombre": "Habitación Bella Vista",
+        "precio": 300,
+        "descripcion": "Cuenta con camas matrimoniales e individuales. Es una de las más demandadas por sus vistas maravillosas a la playa, cuenta con entradas de luz increíbles para disfrutar del sol o si gustas tomarte fotos."
+    },
+    {
+        "id":6,
+        "imagen": "https://www.tuoagency.com/uploads/sizes/blog/como-decorar-suite-hotel.jpg",
+        "nombre": "Habitación Suite",
+        "precio": 500,
+        "descripcion": "¿Necesitas descansar y trabajar? Esta habitación es para ti, cuenta con un espacio ideal para trabajar, sillas presidenciales, completamente cómodas para cuidar de tu salud. Acceso a internet de gran velocidad."
+    }
+]
