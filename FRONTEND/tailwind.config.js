@@ -24,11 +24,20 @@ export default {
         200: '#5ecde0',
         300: '#6BCFCD',
       },
+      'dark':{
+        'greenClaro':'#84a7a1',
+        'greenMedio':'#04293a',
+        'greenOscuro':'#022028',
+        'blueClaro':'#1f6e8c',
+        'blueOscuro':'#082032',
+      },
     },
     extend: {
       backgroundImage: {
         'parallaxFondo1': "url('/src/assets/Parallax/ImgCompleta.png')",
         'parallaxFondo2': "url('/src/assets/Parallax/ImgRecorte.png')",
+        'parallaxFondo1mo' : "url('/src/assets/Parallax/landing-confondo-mo.png')",
+        'parallaxFondo2mo' : "url('/src/assets/Parallax/landing-sinfondo-mo.png')",
         'landingFondo1': "url('/src/assets/fondoHotel1.jpg')",
         'bgFondo1': "url('/src/assets/fondoHotel2.jpg')",
         'bgFondo2': "url('/src/assets/fondoHotel3.jpg')",

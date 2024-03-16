@@ -18,27 +18,29 @@ export function Encabezado() {
             <div className="px-10 py-4 relative h-20">
                 <div className="flex flex-row justify-between items-center">
                     <Link to={`/inicio`}className="no-underline text-black"><h1 className="text-2xl font-textos no-underline text-black">Hazbin<span className="no-underline font-titulos text-[28px]">Hotel</span></h1></Link>
-                    <nav className="hidden md:flex flex-row gap-16 items-center justify-center ">
-                        <ul className="flex flex-row gap-16 items-center justify-center font-textos text-lg">
-                            <li className="">
-                                <NavLink to={`/inicio`} className={({isActive}) => (isActive ? "font-bold border-b-2 border-blue-200 p-2 no-underline text-black" : "no-underline text-black")} >Inicio</NavLink>
-                            </li>
-                            <li>
-                                <NavLink to={`/acceder`} className={({isActive}) => (isActive ? "font-bold border-b-2 border-blue-200 p-2 no-underline text-black" : "no-underline text-black")}>Acceder</NavLink>
-                            </li>
-                            <li>
-                                <NavLink to={`/reservar`} className={({isActive}) => (isActive ? "font-bold bg-blue-200 py-3 px-5 no-underline text-black" : "bg-black text-white py-3 px-5 hover:bg-blue-200 no-underline hover:text-black")}>Reservar</NavLink>
-                            </li>
-                        </ul>
-                    </nav>
+                    <div className="flex flex-row justify-end items-center gap-3">
+                        <nav className="hidden md:flex flex-row gap-16 items-center justify-center ">
+                            <ul className="flex flex-row gap-16 items-center justify-end md:justify-center font-textos text-lg">
+                                <li className="hidden lg:inline-block">
+                                    <NavLink to={`/inicio`} className={({isActive}) => (isActive ? "font-bold border-b-2 border-blue-200 p-2 no-underline text-black" : "no-underline text-black")} >Inicio</NavLink>
+                                </li>
+                                <li className="hidden lg:inline-block">
+                                    <NavLink to={`/cerraar`} className={({isActive}) => (isActive ? "font-bold border-b-2 border-blue-200 p-2 no-underline text-black" : "no-underline text-black")}>Cerrar Sesión</NavLink>
+                                </li>
+                                <li className="hidden md:inline-block">
+                                    <NavLink to={`/reservar`} className={({isActive}) => (isActive ? "font-bold bg-blue-200 py-[11px] px-5 no-underline text-black" : "bg-black text-white py-[11px] px-5 hover:bg-blue-200 no-underline hover:text-black")}>Reservar</NavLink>
+                                </li>
+                            </ul>
+                        </nav>
 
-                    {menu ?
-                        <>
-                        <motion.button onClick={() => {setMenu(false)}}  initial={{ opacity: 0, scale:0.9 }} animate={{ opacity: 1, scale:1}} transition={{ duration: 0.3}} className="flex md:hidden"><IoCloseOutline className="text-5xl"/></motion.button>
-                        </>
-                        :   
-                        <motion.button onClick={() => {setMenu(true)}} initial={{ opacity: 0, scale:0.9 }} animate={{ opacity: 1, scale:1}} transition={{ duration: 0.3}} className="flex md:hidden" ><IoMenuOutline className="text-5xl"/></motion.button>
-                    }
+                        {menu ?
+                            <>
+                            <motion.button onClick={() => {setMenu(false)}}  initial={{ opacity: 0, scale:0.9 }} animate={{ opacity: 1, scale:1}} transition={{ duration: 0.3}} className="flex lg:hidden "><IoCloseOutline className="text-5xl"/></motion.button>
+                            </>
+                            :   
+                            <motion.button onClick={() => {setMenu(true)}} initial={{ opacity: 0, scale:0.9 }} animate={{ opacity: 1, scale:1}} transition={{ duration: 0.3}} className="flex lg:hidden items-center" ><IoMenuOutline className="text-5xl"/></motion.button>
+                        }
+                    </div>
                 </div>
                 <Menu menu={menu} setMenu={setMenu} />
             </div>
