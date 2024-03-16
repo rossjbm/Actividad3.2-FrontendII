@@ -27,16 +27,15 @@ export function Servicios() {
                             <p className='text-lg font-textos text-justify text-white'>Cada rincón de HazbinHotel ha sido diseñado pensando en la comodidad y el lujo. Nuestras habitaciones y suites cuentan con mobiliario elegante y colores relajantes.</p>
                         </div>
                     </section>
-                    <section className={`flex flex-col sm:flex-row gap-2 shadow-2xl ${isDarkMode ? ' bg-dark-blueClaro' : 'bg-gray-300'}`}>
+                    <section className={`flex flex-col sm:flex-row gap-2  shadow-2xl  ${isDarkMode ? ' bg-dark-blueClaro' : 'bg-gray-300'}`}>
                         <div className='h-80 xl:h-full sm:w-1/2 shadow-2xl '>
-                            <img src={ImgGastronomia} alt="Comidas en HazbinHotel" className='w-full h-full object-cover'/>
+                            <img src={ImgGastronomia} alt="Actividades en HazbinHotel" className='w-full h-full object-cover'/>
                         </div>
                         <div className='sm:w-1/2 p-5 flex flex-col gap-6'>
                             <h4 className='text-2xl font-textos font-semibold text-white'>Experiencias Gastronómicas</h4>
                             <p className='text-lg font-textos text-justify text-white'>Nuestro restaurante ofrece una fusión de sabores locales e internacionales. Disfruta de platos frescos y deliciosos mientras contemplas las vistas al mar.</p>
                         </div>
-                    </section> 
-        
+                    </section>
                     <section className={`flex flex-col sm:flex-row gap-2  shadow-2xl ${isDarkMode ? ' bg-dark-blueClaro' : 'bg-gray-300'}`}>
                         <div className='h-80 xl:h-full sm:w-1/2 shadow-2xl '>
                             <img src={ImgActividades} alt="Actividades en HazbinHotel" className='w-full h-full object-cover'/>

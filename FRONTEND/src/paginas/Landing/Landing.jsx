@@ -29,13 +29,13 @@ export function Landing() {
     return(<>
         <ModoOscuro>
             {(isDarkMode) => (
-                <section className={`${isDarkMode ? ' bg-dark-greenOscuro' : 'bg-blue-300'}`}>
+                <section className={`${isDarkMode ? ' dark:bg-dark-greenOscuro' : 'bg-blue-300'}`}>
                     <Parallax></Parallax>
                     <div className='py-11 mb-40'>
                         <article className='flex flex-col items-center gap-40'>
-                            <h2 className={` text-3xl font-textos text-center mt-20 md:text-4xl mx-5 ${isDarkMode ? ' text-white' : 'text-black'}`}>Bienvenido a Hazbin<span className='font-titulos text-4xl'>Hotel</span></h2>
+                            <h2 className={` text-3xl font-textos text-center mt-20 md:text-4xl mx-5 ${isDarkMode ? ' dark:text-white' : 'text-black'}`}>Bienvenido a Hazbin<span className='font-titulos text-4xl'>Hotel</span></h2>
                             <div className='bg-landingFondo1 bg-cover bg-fixed shadow-2xl'>
-                                <section className={`flex flex-col items-center justify-center text-center gap-16 py-16 ${isDarkMode ? 'bg-gray-400' : 'bg-gray-300'}`} >
+                                <section className={`flex flex-col items-center justify-center text-center gap-16 py-16 ${isDarkMode ? 'dark:bg-gray-400' : 'bg-gray-300'}`} >
                                     <h3 className='text-white font-bold text-xl font-textos text-justify w-4/5'>Lo Mejor para Disfrutar de la Isla de Margarita</h3>
                                     <p className='text-white font-textos text-lg text-justify w-4/5'>En HazbinHotel, creemos que cada momento de tus vacaciones debe ser especial. Desde el momento en que pones un pie en nuestra propiedad, te sumergirás en un mundo de elegancia, comodidad y belleza natural.</p>
                                     <p className='text-white font-textos text-lg text-justify w-4/5'>Nos ubicamos en: C. Antonio Díaz, Pampatar 6316, Nueva Esparta, Venezuela</p>
@@ -45,14 +45,14 @@ export function Landing() {
                                 </section>
                             </div>
                             <section className='flex flex-col items-center gap-20'>
-                                <h3 className={`font-bold text-2xl font-textos text-justify md:text-3xl ${isDarkMode ? ' text-white' : 'text-black'}`}>Te Ofrecemos...</h3>
+                                <h3 className={`font-bold text-2xl font-textos text-justify md:text-3xl ${isDarkMode ? ' dark:text-white' : 'text-black'}`}>Te Ofrecemos...</h3>
             
                                 <Servicios/>
                             </section>
                         </article>
                     </div>
                     <div className='bg-landingFondo1 bg-cover bg-fixed shadow-2xl w-full'>
-                        <section className={`flex flex-col items-center justify-center gap-16 py-20 ${isDarkMode ? ' bg-gray-400' : 'bg-gray-300'}`}>
+                        <section className={`flex flex-col items-center justify-center gap-16 py-20 ${isDarkMode ? ' dark:bg-gray-400' : 'bg-gray-300'}`}>
                             <h3 className='text-white font-bold text-2xl font-textos text-center w-4/5 sm:text-3xl'>Usuarios opinan que...</h3>
                             <section className='grid grid-cols-1 px-20 md:px-10 md:grid-cols-3 gap-10 font-textos '>
                                 <Opiniones/>
