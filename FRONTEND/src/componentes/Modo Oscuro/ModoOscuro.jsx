@@ -1,5 +1,5 @@
-// ModoOscuro.jsx
 import React, { useEffect, useState } from 'react';
+import { FaMoon, FaSun } from 'react-icons/fa'; // Importa los iconos de luna y sol
 
 const ModoOscuro = ({ children }) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -27,11 +27,23 @@ const ModoOscuro = ({ children }) => {
     root.classList.add(theme);
   }, [isDarkMode]);
 
-  // Render children components with isDarkMode prop
-  return children(isDarkMode);
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+  };
+
+  return (
+    <>
+      {/* Botón para activar/desactivar modo oscuro */}
+      <button onClick={toggleDarkMode} className="fixed right-4 top-4 z-50 bg-white p-2 rounded-full shadow-lg">
+        {isDarkMode ? <FaSun size={24} color="#FFA500" /> : <FaMoon size={24} color="#4B5563" />}
+      </button>
+      {children(isDarkMode)}
+    </>
+  );
 };
 
 export default ModoOscuro;
+
 
 
 
