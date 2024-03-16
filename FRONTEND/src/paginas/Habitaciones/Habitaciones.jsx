@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import data from "../../data/Habitaciones.json";
 import Loader from '../../componentes/Loader/Loader';
+import FiltroModal from '../../componentes/Filtro/Filtro'; // Importa el componente FiltroModal
 
 export function Habitaciones() {
   const [loading, setLoading] = useState(true);
@@ -29,6 +30,8 @@ export function Habitaciones() {
         <Loader />
       ) : ( // Si los datos ya se han cargado, mostramos la lista de habitaciones
         <div className='grid grid-cols-1 gap-14 py-20 xl:grid-cols-2 xl:px-20'>
+          {/* Agrega el componente FiltroModal */}
+          <FiltroModal />
           {habitaciones.map(habitacion => (
             <section key={habitacion.id} className='bg-gray-300 md:grid md:grid-cols-2'>
               <div>
