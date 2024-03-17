@@ -18,7 +18,7 @@ const habitacionesSchema = new mongoose.Schema(
         calificacion: {
             type: Number,
             default: 0
-        }
+        },
     },
     {
         versionKey: false //para evitar el __v al agregar datos

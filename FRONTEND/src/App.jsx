@@ -12,11 +12,15 @@ import { Habitaciones } from "./paginas/Habitaciones/Habitaciones";
 import { Contacto } from "./paginas/Contacto/Contacto";
 import { Pago } from "./paginas/Pago/Pago";
 import { Clima } from "./componentes/clima/Clima";
+import { Blog } from "./paginas/Blog/Blog";
+import ModoOscuro from "./componentes/Modo Oscuro/ModoOscuro";
+
 
 // REACT ROUTER
 import { Routes, Route} from "react-router-dom";
 import { useState, useContext } from "react";
-import { Blog } from "./paginas/Blog/Blog";
+import { isDragActive } from "framer-motion";
+
 
 export const Mostrar = React.createContext();
 
@@ -29,21 +33,25 @@ export function App() {
     return (<>
         {headerMostrar ? <Encabezado/> : null}
         {climaMostrar ? <Clima/> : null}
-        <main className="min-h-[400px] md:min-h-[500px] lg:min-h-[350px]">
-            <Mostrar.Provider value={{ setHeaderMostrar, setBotonRMostrar, setPieMostrar, setClimaMostrar }}>
-                <Routes>
-                    <Route path="/" element={<Landing/>} />
-                    <Route path="/inicio" element={<Inicio/>} />
-                    <Route path="/ofertas" element={<Ofertas/>} />
-                    <Route path="/habitaciones" element={<Habitaciones/>} />
-                    <Route path="/blog" element={<Blog/>} />
-                    <Route path="/pagos" element={<Pago/>} />
-                    <Route path="/contacto" element={<Contacto/>} />
-                    <Route path="/reservar" element={<Reservar/>} />
-                    <Route path="*" element={<Error/>} />
-                </Routes>
-            </Mostrar.Provider>
-        </main>
+        <ModoOscuro>
+            {(isDarkMode) => (
+                <main className={`min-h-[400px] md:min-h-[500px] lg:min-h-[350px] ${isDarkMode ? `bg-dark-blueClaro` : `bg-white`}`} >
+                    <Mostrar.Provider value={{ setHeaderMostrar, setBotonRMostrar, setPieMostrar, setClimaMostrar }}>
+                        <Routes>
+                            <Route path="/" element={<Landing/>} />
+                            <Route path="/inicio" element={<Inicio/>} />
+                            <Route path="/ofertas" element={<Ofertas/>} />
+                            <Route path="/habitaciones" element={<Habitaciones/>} />
+                            <Route path="/blog" element={<Blog/>} />
+                            <Route path="/pagos" element={<Pago/>} />
+                            <Route path="/contacto" element={<Contacto/>} />
+                            <Route path="/reservar" element={<Reservar/>} />
+                            <Route path="*" element={<Error/>} />
+                        </Routes>
+                    </Mostrar.Provider>
+                </main>
+            )}
+        </ModoOscuro>
         {pieMostrar ? <Pie/> : null}
         {botonRMostrar ? <BotonReservar/> : null}
         
