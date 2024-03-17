@@ -2,9 +2,7 @@ const mongoose = require('mongoose');
 
 const ofertasSchema = new mongoose.Schema( 
     {
-        _id: {
-            type: String  
-        },
+        _id: mongoose.Schema.ObjectId,
         titulo: {
             type: String
         },

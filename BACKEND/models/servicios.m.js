@@ -2,9 +2,7 @@ const mongoose = require('mongoose'); //requerimos libreria de mongo
 
 const serviciosSchema = new mongoose.Schema( 
     {
-        _id: {
-            type: String  
-        },
+        id: mongoose.Schema.ObjectId,
         titulo: {
             type: String
         },

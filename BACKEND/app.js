@@ -8,6 +8,10 @@ const cors = require('cors')
 var indexRouter = require('./routes/index');
 var correoRouter = require('./routes/correo');
 var serviciosRouter = require('./routes/servicios.r');
+const habitacionesRouter = require('./routes/habitaciones.r');
+const ofertasRouter = require('./routes/ofertas.r');
+const reservasRouter = require('./routes/reservas.r');
+const comentariosRouter = require('./routes/comentarios.r');
 
 var app = express();
 
@@ -28,6 +32,10 @@ var db = require('./conexion/conexion');
 app.use('/', indexRouter);
 app.use('/correo', correoRouter);
 app.use('/servicios', serviciosRouter);
+app.use('/habitaciones', habitacionesRouter);
+app.use('/ofertas', ofertasRouter);
+app.use('/reservas', reservasRouter);
+app.use('/comentarios', comentariosRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

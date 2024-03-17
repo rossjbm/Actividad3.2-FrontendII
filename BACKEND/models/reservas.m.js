@@ -2,9 +2,7 @@ const mongoose = require('mongoose'); //requerimos libreria de mongo
 
 const reservasSchema = new mongoose.Schema( 
     {
-        _id: {
-            type: String  
-        },
+        id: mongoose.Schema.ObjectId,
         nombre: {
             type: String
         },
@@ -18,10 +16,10 @@ const reservasSchema = new mongoose.Schema(
             type: String
         },
         fecha_inicio: {
-            type: Date
+            type: String
         },
         fecha_salida: {
-            type: Date
+            type: String
         }
     },
     {
