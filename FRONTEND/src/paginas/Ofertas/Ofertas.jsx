@@ -4,6 +4,7 @@ import ofertasData from "../../data/Ofertas.json";
 //componentes
 import { ListarOfertas } from '../../funciones/Fetch/Ofertas/ListarOfertas';
 import { RenderOfertas } from '../../componentes/Ofertas/RenderOfertas';
+import { AgregarOfertas } from '../../componentes/Ofertas/CRUD/AgregarOfertas';
 import Loader from '../../componentes/Globales/Loader/Loader';
 
 //modo oscuro
@@ -54,9 +55,7 @@ export function Ofertas() {
 
             {/* agregar ofertas */}
             {sesionActiva === 2 ?
-              <div className={`flex flex-col justify-center m-20 w-auto h-auto`}>
-                <button onClick={() => console.log('sirvo')} className='text-2xl text-white'>AÑADIR</button>
-              </div>
+              <AgregarOfertas/>
               : null
             }
 
