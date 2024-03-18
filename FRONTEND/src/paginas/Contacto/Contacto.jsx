@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import { MdPhoneInTalk } from "react-icons/md";
 import { MdEmail } from "react-icons/md";
 import { IoLocationSharp } from "react-icons/io5";
@@ -5,12 +6,24 @@ import { CiInstagram } from "react-icons/ci";
 import { CiFacebook } from "react-icons/ci";
 import { PiTiktokLogoLight } from "react-icons/pi";
 import { FaGithub } from "react-icons/fa";
-
+import Loader from "../../componentes/Globales/Loader/Loader";
 import ModoOscuro from "../../componentes/Globales/Modo Oscuro/ModoOscuro";
 
 export function Contacto(){
-    
-    return(<>
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Simula una carga de datos
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000); // Simula una carga de 2 segundos
+  }, []);
+
+  return (
+    <>
+      {loading ? (
+        <Loader />
+      ) : (
         <ModoOscuro>
             {(isDarkMode) => (
                 <section className="flex flex-col">
@@ -56,5 +69,6 @@ export function Contacto(){
                 </section>
             )}
         </ModoOscuro>
+        )}
     </>)
 }
