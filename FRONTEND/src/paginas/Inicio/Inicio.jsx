@@ -1,7 +1,7 @@
 // Inicio.jsx
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import ModoOscuro from '../../componentes/Modo Oscuro/ModoOscuro';
+import ModoOscuro from '../../componentes/Globales/Modo Oscuro/ModoOscuro';
 import { ServicioCarrusel } from '../../componentes/Inicio/ServicioCarrusel';
 import { Horarios } from '../../componentes/Inicio/Horarios';
 import ofertasData from '../../data/Ofertas.json';

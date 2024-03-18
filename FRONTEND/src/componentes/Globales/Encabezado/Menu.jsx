@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+
 import ModoOscuro from "../Modo Oscuro/ModoOscuro";
+
 
 export function Menu({menu, setMenu}) {
     return(<>

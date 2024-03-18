@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from 'react'
 import { Mostrar } from '../../App'
 
 import habitaciones from '../../data/Habitaciones.json'
-import ModoOscuro from '../../componentes/Modo Oscuro/ModoOscuro';
+import ModoOscuro from '../../componentes/Globales/Modo Oscuro/ModoOscuro';
 
 //icono
 import { IoCloseOutline } from "react-icons/io5";

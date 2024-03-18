@@ -1,5 +1,5 @@
 import {motion, useScroll, useTransform} from "framer-motion";
-import ModoOscuro from "../Modo Oscuro/ModoOscuro";
+import ModoOscuro from "../Globales/Modo Oscuro/ModoOscuro";
 
 import React, {useRef} from "react";
 

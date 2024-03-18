@@ -2,10 +2,10 @@ import { Link } from 'react-router-dom';
 import { useEffect, useContext } from 'react';
 import { Mostrar } from '../../App'
 
-import { Parallax } from '../../componentes/Parallax/Parallax';
+import { Parallax } from '../../componentes/Landing/Parallax';
 import { Servicios } from '../../componentes/Landing/Servicios';
 import { Opiniones } from '../../componentes/Landing/Opiniones';
-import ModoOscuro from '../../componentes/Modo Oscuro/ModoOscuro';
+import ModoOscuro from '../../componentes/Globales/Modo Oscuro/ModoOscuro';
 
 
 

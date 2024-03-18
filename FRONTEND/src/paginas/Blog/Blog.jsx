@@ -1,9 +1,9 @@
 import { Accordion } from "react-bootstrap";
-import { Clima } from "../../componentes/clima/Clima";
+import { Clima } from "../../componentes/Globales/Clima/Clima";
 import data from "../../data/Blog.json"
 import { useState } from "react";
 
-import ModoOscuro from "../../componentes/Modo Oscuro/ModoOscuro";
+import ModoOscuro from "../../componentes/Globales/Modo Oscuro/ModoOscuro";
 
 export function Blog() {
 const [articulos,setAticulos] =useState(data)

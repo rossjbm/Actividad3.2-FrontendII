@@ -1,37 +1,72 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import ofertasData from "../../data/Ofertas.json";
 
-import ModoOscuro from '../../componentes/Modo Oscuro/ModoOscuro';
+//componentes
+import { ListarOfertas } from '../../funciones/Fetch/Ofertas/ListarOfertas';
+import { RenderOfertas } from '../../componentes/Ofertas/RenderOfertas';
+import Loader from '../../componentes/Globales/Loader/Loader';
+
+//modo oscuro
+import ModoOscuro from '../../componentes/Globales/Modo Oscuro/ModoOscuro';
+
+//contexto de la sesion activa
+import { Sesion } from '../../App';
 
 export function Ofertas() {
-  const [ofertas, setOfertas] = useState(ofertasData);
+  const {sesionActiva} = useContext(Sesion);
+  const [ofertas, setOfertas] = useState();
+  const [cargando, setCargando] = useState(false);
+
+  useEffect( () => {
+    async function fetchData() {
+      setCargando(true)
+      try {
+        console.log('estamos listando ofertas')
+        const documentos = await ListarOfertas()
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        console.log('soy doc', documentos.habitaciones)
+        setOfertas(documentos.habitaciones)
+      } catch(error) {
+        console.log(error)
+      }
+    }
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    ofertas === undefined ? setCargando(true) : setCargando(false)
+    console.log('oferta es', Array.isArray(ofertas))
+  }, [ofertas]);
+
+
 
   return (
     <>
       <ModoOscuro>
         {(isDarkMode) => (
           <>
+            {/* titulo de página */}
             <div className="static h-56 bg-bgFondo1 bg-cover bg-fixed w-full">
               <div className="flex justify-center items-center w-full h-56 bg-gray-400 p-5">
                 <h2 className="text-white text-3xl font-textos text-center">Ofertas</h2>
               </div>
             </div>
-            <div className='grid grid-cols-1 gap-14 py-20 xl:grid-cols-2 xl:px-20'>
-              {
-                ofertas.map(oferta => (
-                  <section key={oferta.id} className={`md:grid md:grid-cols-2 ${isDarkMode ? `bg-dark-greenMedio` : `bg-gray-300`}`} >
-                    <div>
-                      <img src={oferta.imagen} alt="Oferta" className='h-72 xl:h-full object-cover w-full'/>
-                    </div>
-                    <div className='flex flex-col gap-4 p-4 justify-around items-center text-white font-textos'>
-                      <h3 className='text-2xl text-center'>{oferta.nombre}</h3>
-                      <p className={`text-xl p-2 font-bold ${isDarkMode ? `text-white bg-dark-blueClaro` : `bg-blue-200  text-black `}`}>{oferta.limite}</p>
-                      <p className='text-center'>{oferta.descripcion}</p>
-                    </div>
-                  </section>
-                ))
-              }
-            </div>
+
+            {/* agregar ofertas */}
+            {sesionActiva === 2 ?
+              <div className={`flex flex-col justify-center m-20 w-auto h-auto`}>
+                <button onClick={() => console.log('sirvo')} className='text-2xl text-white'>AÑADIR</button>
+              </div>
+              : null
+            }
+
+            {/* Renderizado Ofertas */}
+            {cargando || !ofertas ? 
+              <Loader/>
+              : 
+              // null
+              <RenderOfertas ofertas={ofertas} /> 
+            }
           </>
         )}
       </ModoOscuro>

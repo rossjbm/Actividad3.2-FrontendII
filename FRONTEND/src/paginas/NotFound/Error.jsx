@@ -2,7 +2,7 @@ import { useEffect, useContext } from "react"
 import { Link } from "react-router-dom";
 import { Mostrar } from '../../App'
 
-import ModoOscuro from "../../componentes/Modo Oscuro/ModoOscuro";
+import ModoOscuro from "../../componentes/Globales/Modo Oscuro/ModoOscuro";
 
 export function Error() {
     const { setHeaderMostrar, setBotonRMostrar, setPieMostrar, setClimaMostrar } = useContext(Mostrar);

@@ -1,4 +1,4 @@
-import ModoOscuro from "../Modo Oscuro/ModoOscuro"
+import ModoOscuro from "../Globales/Modo Oscuro/ModoOscuro"
 
 export function Horarios() {
     return(<ModoOscuro>

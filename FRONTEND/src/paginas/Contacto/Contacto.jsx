@@ -6,7 +6,7 @@ import { CiFacebook } from "react-icons/ci";
 import { PiTiktokLogoLight } from "react-icons/pi";
 import { FaGithub } from "react-icons/fa";
 
-import ModoOscuro from "../../componentes/Modo Oscuro/ModoOscuro";
+import ModoOscuro from "../../componentes/Globales/Modo Oscuro/ModoOscuro";
 
 export function Contacto(){
     

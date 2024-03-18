@@ -1,4 +1,4 @@
-import ModoOscuro from "../../componentes/Modo Oscuro/ModoOscuro"
+import ModoOscuro from "../../componentes/Globales/Modo Oscuro/ModoOscuro"
 
 export function Pago(){
     return(<>

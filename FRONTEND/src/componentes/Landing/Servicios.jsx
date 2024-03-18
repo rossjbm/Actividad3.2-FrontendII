@@ -2,7 +2,7 @@ import ImgUbicacion from '../../assets/Landing/ubicacion2.jpg';
 import ImgSotisficado from '../../assets/Landing/sotisficado2.jpeg';
 import ImgGastronomia from '../../assets/Landing/gastronomia2.jpg';
 import ImgActividades from '../../assets/Landing/actividades2.jpg';
-import ModoOscuro from '../Modo Oscuro/ModoOscuro';
+import ModoOscuro from '../Globales/Modo Oscuro/ModoOscuro';
 
 export function Servicios() {
     return(<>

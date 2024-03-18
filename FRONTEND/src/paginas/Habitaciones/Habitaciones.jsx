@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import data from "../../data/Habitaciones.json";
-import Loader from '../../componentes/Loader/Loader';
-import FiltroModal from '../../componentes/Filtro/Filtro'; // Importa el componente FiltroModal
+import Loader from '../../componentes/Globales/Loader/Loader';
+import FiltroModal from '../../componentes/Habitaciones/Filtro/Filtro'; // Importa el componente FiltroModal
 
-import ModoOscuro from '../../componentes/Modo Oscuro/ModoOscuro';
+import ModoOscuro from '../../componentes/Globales/Modo Oscuro/ModoOscuro';
 
 export function Habitaciones() {
   const [loading, setLoading] = useState(true);

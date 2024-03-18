@@ -1,5 +1,5 @@
 import {Link} from "react-router-dom"
-import ModoOscuro from "../Modo Oscuro/ModoOscuro"
+import ModoOscuro from "../Globales/Modo Oscuro/ModoOscuro"
 
 export function BotonReservar() {
     return(<ModoOscuro>

@@ -85,7 +85,7 @@ export function Clima() {
                                 
                                 <p className='text-xl mb-2 font-titulos'>Clima de hoy</p>
                                 {tiempoActual.map((hora, index)=>(
-                                    <div className={`${currentHour == (new Date(hora)).getHours() ? `${isDarkMode ? `bg-dark-blueClaro` : `bg-blue-200`}` :`${isDarkMode ? `bg-dark-blueOscuro` : `bg-green-100`}`} relative p-2 flex w-full justify-around border-solid border-t-2 border-green-100 font-textos`}>
+                                    <div key={index} className={`${currentHour == (new Date(hora)).getHours() ? `${isDarkMode ? `bg-dark-blueClaro` : `bg-blue-200`}` :`${isDarkMode ? `bg-dark-blueOscuro` : `bg-green-100`}`} relative p-2 flex w-full justify-around border-solid border-t-2 border-green-100 font-textos`}>
                                         <p className='absolute left-2'>{hora = ((new Date(hora)).getHours()).toString().padStart(2, '0')}:00</p>
                                         <CodigoClima codigo={codigoDeClimaActual[index]} time={tiempoActual[index]}/>
                                         <div>

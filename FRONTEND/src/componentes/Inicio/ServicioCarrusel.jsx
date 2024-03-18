@@ -8,7 +8,7 @@ import Servicio5 from '../../assets/Servicios/Servicio5.jpg'
 import Servicio6 from '../../assets/Servicios/Servicio6.jpg'
 import Servicio7 from '../../assets/Servicios/Servicio7.jpeg'
 
-import ModoOscuro from '../Modo Oscuro/ModoOscuro'
+import ModoOscuro from '../Globales/Modo Oscuro/ModoOscuro'
 
 export function ServicioCarrusel() {
   return (<ModoOscuro>

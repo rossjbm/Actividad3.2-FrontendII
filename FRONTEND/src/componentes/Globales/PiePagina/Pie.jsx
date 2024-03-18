@@ -1,5 +1,5 @@
-import LogoClaro from '../../assets/Iconos/icono-mc.png'
-import LogoOscuro from '../../assets/Iconos/icono-mo.png'
+import LogoClaro from '../../../assets/Iconos/icono-mc.png'
+import LogoOscuro from '../../../assets/Iconos/icono-mo.png'
 
 // iconos
 import { MdPhoneInTalk } from "react-icons/md";
@@ -7,6 +7,8 @@ import { MdEmail } from "react-icons/md";
 import { CiInstagram } from "react-icons/ci";
 import { CiFacebook } from "react-icons/ci";
 import { FaGithub } from "react-icons/fa";
+
+//modo oscuro
 import ModoOscuro from '../Modo Oscuro/ModoOscuro';
 
 
