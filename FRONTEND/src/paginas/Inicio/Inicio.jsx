@@ -1,18 +1,30 @@
-// Inicio.jsx
-import React, { useState } from 'react';
+
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ModoOscuro from '../../componentes/Globales/Modo Oscuro/ModoOscuro';
 import { ServicioCarrusel } from '../../componentes/Inicio/ServicioCarrusel';
 import { Horarios } from '../../componentes/Inicio/Horarios';
 import ofertasData from '../../data/Ofertas.json';
+import Loader from '../../componentes/Globales/Loader/Loader';
 
 export function Inicio() {
   const [oferta, setOferta] = useState(ofertasData[1]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Simula una carga de datos
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000); // Simula una carga de 1 segundos
+  }, []);
 
   return (
+    <>
+      {loading ? (
+        <Loader />
+      ) : (
     <ModoOscuro>
       {(isDarkMode) => (
-        <>
           <article className={`flex flex-col gap-20 ${isDarkMode ? 'dark:text-white dark:bg-dark-blueClaro' : 'bg-white text-black'}`}>
             <div className={`static h-56 bg-bgFondo1 bg-cover bg-fixed w-full`}>
               <div className="flex justify-center items-center w-full h-56 bg-gray-400 p-5">
@@ -76,8 +88,10 @@ export function Inicio() {
               </Link>
             </div>
           </article>
-        </>
+        
       )}
     </ModoOscuro>
-  );
+    )}
+    </>     
+    ); 
 }
