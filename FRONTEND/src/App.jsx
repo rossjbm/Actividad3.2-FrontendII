@@ -6,7 +6,6 @@ import { Encabezado } from "./componentes/Globales/Encabezado/Encabezado";
 import { Ofertas } from "./paginas/Ofertas/Ofertas";
 import { Reservar } from "./paginas/Reservar/Reservar";
 import { Error } from "./paginas/NotFound/Error";
-import { BotonReservar } from "./componentes/Botones/BotonReservar";
 import { Pie } from "./componentes/Globales/PiePagina/Pie";
 import { Habitaciones } from "./paginas/Habitaciones/Habitaciones";
 import { Contacto } from "./paginas/Contacto/Contacto";
@@ -14,6 +13,7 @@ import { Pago } from "./paginas/Pago/Pago";
 import { Clima } from "./componentes/Globales/Clima/Clima";
 import { Blog } from "./paginas/Blog/Blog";
 import ModoOscuro from "./componentes/Globales/Modo Oscuro/ModoOscuro";
+import BotonReservar from "./componentes/botones/BotonReservar"
 
 
 // REACT ROUTER
