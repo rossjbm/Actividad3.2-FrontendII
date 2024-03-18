@@ -1,7 +1,7 @@
 import {Link} from "react-router-dom"
 import ModoOscuro from "../Globales/Modo Oscuro/ModoOscuro"
 
-export function BotonReservar() {
+export default function BotonReservar() {
     return(<ModoOscuro>
         {(isDarkMode) => (
             <div className="flex md:hidden">
