@@ -13,11 +13,15 @@ import ModoOscuro from '../../componentes/Globales/Modo Oscuro/ModoOscuro';
 // Contexto de la sesión activa
 import { Sesion } from '../../App';
 
+export const ActualizarDatos = React.createContext();
+
 export function Ofertas() {
   const { sesionActiva } = useContext(Sesion);
   const [ofertas, setOfertas] = useState();
   const [cargando, setCargando] = useState(false);
   const [botonMostrar, setBotonMostrar] = useState(false); // Estado para mostrar el botón
+
+  const [actualizar, setActualizar] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -28,13 +32,14 @@ export function Ofertas() {
         await new Promise(resolve => setTimeout(resolve, 2000));
         console.log('Soy doc', documentos.habitaciones);
         setOfertas(documentos.habitaciones);
+        setActualizar(false);
         setBotonMostrar(true); // Mostrar el botón después de cargar las ofertas
       } catch (error) {
         console.log(error);
       }
     }
     fetchData();
-  }, []);
+  }, [actualizar]);
 
   useEffect(() => {
     ofertas === undefined ? setCargando(true) : setCargando(false);
@@ -53,17 +58,19 @@ export function Ofertas() {
               </div>
             </div>
 
-            {/* Agregar ofertas */}
-            {sesionActiva === 2 && botonMostrar && (
-              <AgregarOfertas />
-            )}
+            <ActualizarDatos.Provider value={{setActualizar}}>
+              {/* Agregar ofertas */}
+              {sesionActiva === 2 && botonMostrar && (
+                <AgregarOfertas />
+              )}
 
-            {/* Renderizado Ofertas */}
-            {cargando || !ofertas ? (
-              <Loader />
-            ) : (
-              <RenderOfertas ofertas={ofertas} />
-            )}
+              {/* Renderizado Ofertas */}
+              {cargando || !ofertas ? (
+                <Loader />
+              ) : (
+                <RenderOfertas ofertas={ofertas} />
+              )}
+            </ActualizarDatos.Provider>
           </>
         )}
       </ModoOscuro>

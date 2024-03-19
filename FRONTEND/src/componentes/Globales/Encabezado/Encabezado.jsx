@@ -51,7 +51,7 @@ export function Encabezado() {
                     </div>
                     <div className={`border-y ${isDarkMode ? 'bg-dark-blueOscuro border-white' : 'border-black'}`}>
                         <nav className="py-3 px-5 md:px-10  md:overflow-x-hidden">
-                            <ul style={{}}  className="flex w-full md:justify-around overflow-x-scroll md:overflow-x-hidden overflow-y-hidden gap-20 text-lg font-textos h-10 md:h-auto">
+                            <ul style={{}}  className="flex w-full md:justify-around overflow-x-scroll md:!overflow-x-hidden overflow-y-hidden gap-20 text-lg font-textos h-10 md:h-auto">
                                 <li className="flex-none w-30 scroll-snap-align-center no-underline text-black">
                                     <NavLink to={`/contacto`} className={({isActive}) => (isActive ? `font-bold border-b-2  no-underline ${isDarkMode ? 'text-white border-dark-greenClaro' : 'border-blue-200 text-black'}` : `no-underline ${isDarkMode ? 'text-white' : 'text-black'}`)} >Contacto</NavLink>
                                 </li>

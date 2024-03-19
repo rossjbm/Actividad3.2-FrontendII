@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FormAgregar } from "../Formularios/FormAgregar.o";
 import { CrearOfertas } from "../../../funciones/Fetch/Ofertas/CrearOfertas";
+import ModoOscuro from "../../Globales/Modo Oscuro/ModoOscuro";
 
 export const ContextAgregarOfertas = React.createContext();
 
@@ -49,12 +50,18 @@ export function AgregarOfertas() {
 
     return(<>
         <ContextAgregarOfertas.Provider value={{MostrarFormulario, handleInputChange, handleImageChange, Agregar, nuevaOferta}}>
-            <div className={`flex flex-col justify-center m-20 w-auto h-auto`}>
-                <button onClick={(e) => MostrarFormulario(e)} className='text-2xl text-white'>AÑADIR</button>
-            </div>
-            {formulario ? 
-                <FormAgregar/>
-            : null }
+            <ModoOscuro>
+                {(isDarkMode) => (
+                    <>
+                    <div className={`flex flex-col justify-center items-center m-20 w-auto h-auto`}>
+                        <button onClick={(e) => MostrarFormulario(e)} className={`font-textos text-2xl border-2 w-4/5 xl:w-3/5 py-2 ${isDarkMode ? `text-white bg-transparent border-white hover:!bg-gray-400`: `text-black border-black hover:bg-green-100`} `}>Agrega una Nueva Oferta</button>
+                    </div>
+                    {formulario ? 
+                        <FormAgregar/>
+                    : null }
+                    </>
+                )}
+            </ModoOscuro>
         </ContextAgregarOfertas.Provider>
     </>)
 }
