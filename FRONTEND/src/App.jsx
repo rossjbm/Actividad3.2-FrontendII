@@ -19,6 +19,7 @@ import BotonReservar from "./componentes/botones/BotonReservar"
 // REACT ROUTER
 import { Routes, Route} from "react-router-dom";
 import { useState, useContext } from "react";
+import { HabitacionesDetalles } from "./paginas/Habitaciones/HabitacionDetalles";
 
 export const Sesion = React.createContext();
 export const Mostrar = React.createContext();
@@ -29,6 +30,7 @@ export function App() {
     const [pieMostrar, setPieMostrar] = useState(true)
     const [climaMostrar, setClimaMostrar] = useState(true)
     const [sesionActiva, setSesionActiva] = useState(2) //0 = nadie; 1 = cliente; 2 = admin;
+    const [habitacion, setHabitacion] = useState({})
 
     return (<>
         <Sesion.Provider value={{sesionActiva, setSesionActiva}}>
@@ -42,7 +44,8 @@ export function App() {
                                 <Route path="/" element={<Landing/>} />
                                 <Route path="/inicio" element={<Inicio/>} />
                                 <Route path="/ofertas" element={<Ofertas/>} />
-                                <Route path="/habitaciones" element={<Habitaciones/>} />
+                                <Route path="/habitaciones" element={<Habitaciones setHabitacion={setHabitacion} />} />
+                                <Route path="/habitaciones/detalles" element={<HabitacionesDetalles habitacion={habitacion} />} />
                                 <Route path="/blog" element={<Blog/>} />
                                 <Route path="/pagos" element={<Pago/>} />
                                 <Route path="/contacto" element={<Contacto/>} />

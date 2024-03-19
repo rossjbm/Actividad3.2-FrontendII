@@ -19,6 +19,10 @@ const habitacionesSchema = new mongoose.Schema(
             type: Number,
             default: 0
         },
+        disponible: {
+            type: String,
+            default: "Reservado"
+        }        
     },
     {
         versionKey: false //para evitar el __v al agregar datos
