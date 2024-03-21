@@ -21,6 +21,7 @@ export async function EditOfertas(documento, id) {
         } 
     })
     .catch ((error) => {
-        throw ("Error:", error)
+        console.log("Error:", error)
+        throw error
     }) 
 }

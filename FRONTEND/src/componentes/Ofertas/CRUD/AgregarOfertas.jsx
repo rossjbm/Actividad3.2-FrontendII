@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { FormAgregar } from "../Formularios/FormAgregar.o";
 import { CrearOfertas } from "../../../funciones/Fetch/Ofertas/CrearOfertas";
 import ModoOscuro from "../../Globales/Modo Oscuro/ModoOscuro";
 
 export const ContextAgregarOfertas = React.createContext();
+import { ActualizarDatos } from "../../../paginas/Ofertas/Ofertas";
+import { Alertas } from "../../../App";
 
 export function AgregarOfertas() {
 
@@ -15,6 +17,9 @@ export function AgregarOfertas() {
         fecha_expiracion: "",
         image: ""
     });
+
+    const { setActualizar } = useContext(ActualizarDatos)
+    const {setAlerta, setMensaje} = useContext(Alertas)
 
     const handleInputChange = (e) => {
         setNuevaOferta({ ...nuevaOferta, [e.target.name]: e.target.value})
@@ -31,7 +36,7 @@ export function AgregarOfertas() {
     
     const Agregar = async (e) => {
         e.preventDefault();
-        console.log('soy nueva oferta', nuevaOferta);
+        // console.log('soy nueva oferta', nuevaOferta);
         
         try {  
             const enviado = await CrearOfertas(nuevaOferta)
@@ -41,9 +46,14 @@ export function AgregarOfertas() {
                 fecha_expiracion: "",
                 image: ""
             });
+            setMensaje('La oferta de ha agregado correctamente.')
+            setAlerta(1)
+            setActualizar(true);
             
         } catch (error) {
             console.log('error', error)
+            setMensaje(error)
+            setAlerta(2)
         }
     };
 

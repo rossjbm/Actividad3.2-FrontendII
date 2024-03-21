@@ -69,8 +69,8 @@ class ofertasControllers {
                 return res.status('400').json({ "mensaje": "No Existe esa oferta" })
             }
             const errorIguales = await ofertasModel.find({ "titulo": ofertaEditar.titulo })
-            if (errorIguales.length > 1) {
-                return res.status(400).json({ "error": 'Ya existe una oferta con ese nombre' })
+            if (errorIguales.length > 2) {
+                return res.status(404).json({ "error": 'Ya existe una oferta con ese nombre' })
             }
             // Eliminar imagen anterior si se va a actualizar
             if (req.file && req.file?.path) {

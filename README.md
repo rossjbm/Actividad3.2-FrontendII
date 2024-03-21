@@ -17,14 +17,13 @@ Asignatura Frontend II
 
 
 <h2>Descripción</h2>
-<b>Link del video explicativo: </b><br>
+<b>Link del video explicativo: https://youtu.be/ECp0Y8k87KU</b><br>
 <b>Link del Diseño en Figma:</b> https://www.figma.com/file/vgQ7q9aop2A192y6YqZEkF/e-Actividad-3.2?type=design&node-id=0%3A1&mode=design&t=Q2LaOqZXUItuTzCT-1
 
 Esta aplicación consiste en un SPA de un hotel ficticio llamado HazbinHotel ubicado en Venezuela, estado Nueva Esparta, específicamente en la Isla de Margarita, donde los usuarios podrán ver la información disponible del hotel como ofertas, sus habitaciones, su contacto, y a su vez podrá realizar reservas a través de un formulario.
 
-¡Importante! para le realización de proyecto empleamos el servidor de desarrollo Vite, librerías como React-Bootstrap, React-Icons, Framer Motion y frameworks CSS como Tailwind. Para backend Nodejs y la librería. 
+¡Importante! para le realización de proyecto empleamos el servidor de desarrollo Vite, librerías como React-Bootstrap, React-Icons, Framer Motion y frameworks CSS como Tailwind. Para backend Nodejs, BD MongoDB y la librería multer. 
 
-Cabe aclarar que esta es la primera parte del proyecto, aún no cuenta con Login, Autenticación, Funcionalidades de Administradores, ni almacenamiento en Base de Datos; por lo que encontrarás JSON que harán una simulación de este último.
 
 <h2>Instalación y Arranque del Sistema</h2>
 Todos estos procesos los realizaremos por "Símbolos de Sistema", es decir, el <b>terminal cmd</b>.
@@ -43,6 +42,7 @@ Todos estos procesos los realizaremos por "Símbolos de Sistema", es decir, el <
 </ol>
 <h3>Paso 2 - Iniciar el Sistema (backend)</h3>
 <ol>
+	<li>Suponiendo que ya importaste la db <b>hazbinhotel</b>.</li>
 	<li>Abrimos en un Visual Studio Carperta de <b>BACKEND</b>.</li>
 	<li>Abrir el terminal de Visual Studio Code, e instalar npm con el siguiente comando:
 	```

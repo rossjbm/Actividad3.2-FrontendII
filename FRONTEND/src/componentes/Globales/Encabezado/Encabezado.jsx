@@ -1,6 +1,7 @@
 import { NavLink, Link } from "react-router-dom"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { Menu } from "./Menu"
+import { Sesion } from "../../../App";
 
 import ModoOscuro from "../Modo Oscuro/ModoOscuro";
 
@@ -14,6 +15,7 @@ import { motion } from "framer-motion";
 
 export function Encabezado() {
     const [menu, setMenu] = useState(false)
+    const {sesionActiva} = useContext(Sesion)
 
     return(<>
         <ModoOscuro>
@@ -32,9 +34,12 @@ export function Encabezado() {
                                         <li className="hidden lg:inline-block">
                                             <NavLink to={`/cerrar`} className={({isActive}) => (isActive ? `font-bold border-b-2 p-2 no-underline  ${isDarkMode ? 'text-white border-dark-greenClaro' : 'text-black border-blue-200'}` : `no-underline ${isDarkMode ? 'text-white' : 'text-black'}`)} >Cerrar Sesión</NavLink>
                                         </li>
-                                        <li className="hidden md:inline-block">
-                                            <NavLink to={`/reservar`} className={({isActive}) => (isActive ? `font-bold  py-[11px] px-5 no-underline text-black ${isDarkMode ? 'text-white bg-dark-greenClaro' : 'text-black bg-blue-200'}` : `py-[11px] px-5  no-underline ${isDarkMode ? 'text-black bg-white hover:bg-dark-greenClaro' : 'text-white bg-black hover:bg-blue-200 hover:text-black'}`)}>Reservar</NavLink>
-                                        </li>
+                                        {sesionActiva === 1 ?
+                                            <li className="hidden md:inline-block">
+                                                <NavLink to={`/reservar`} className={({isActive}) => (isActive ? `font-bold  py-[11px] px-5 no-underline text-black ${isDarkMode ? 'text-white bg-dark-greenClaro' : 'text-black bg-blue-200'}` : `py-[11px] px-5  no-underline ${isDarkMode ? 'text-black bg-white hover:bg-dark-greenClaro' : 'text-white bg-black hover:bg-blue-200 hover:text-black'}`)}>Reservar</NavLink>
+                                            </li>
+                                            : null
+                                        }
                                     </ul>
                                 </nav>
         

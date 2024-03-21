@@ -79,6 +79,20 @@ class habitacionesControllers {
         }
     }
 
+    async filtrar(req, res, next) { 
+        try {
+            const cantidad = req.params.cantidad
+            const habitacion = await habitacionesModel.find({ personas: cantidad });
+            if (habitacion && habitacion.length > 0) {
+                return res.status('200').json({"habitacion": habitacion, "mensaje": "Se ha encontrado con exito la habitacion"})
+            }
+            return res.status('400').json({"mensaje": "No Existen Habitaciones para esa Cantidad de Personas"})
+        } catch (error) {
+            console.log('Hubo algún error', error); // vemos error por consola
+            res.status('404').json({"error":error}) //estado
+        }
+    }
+
     async editar(req, res, next) { 
         try {
             const id = req.params.id
@@ -88,7 +102,7 @@ class habitacionesControllers {
                 return res.status('400').json({"mensaje": "No Existe esa habitación"})
             }
             const errorIguales = await habitacionesModel.find({"nombre": habitacionEditar.nombre})
-            if (errorIguales.length > 1) {
+            if (errorIguales.length > 2) {
                 return res.status(400).json({"error": 'Ya existe una habitacion con ese nombre'})
             }
             const habitacionEditada = await habitacionesModel.findByIdAndUpdate(id, {"nombre": habitacionEditar.nombre, "descripcion": habitacionEditar.descripcion, "tarifa": habitacionEditar.tarifa, "cantidad": habitacionEditar.cantidad})

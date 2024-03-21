@@ -1,17 +1,21 @@
 import React, { useState, useContext, useEffect } from 'react';
-import ofertasData from "../../data/Ofertas.json";
 
 // Componentes
 import { ListarOfertas } from '../../funciones/Fetch/Ofertas/ListarOfertas';
 import { RenderOfertas } from '../../componentes/Ofertas/RenderOfertas';
 import { AgregarOfertas } from '../../componentes/Ofertas/CRUD/AgregarOfertas';
 import Loader from '../../componentes/Globales/Loader/Loader';
+import { AlertaExito } from '../../componentes/Alertas/AlertaExito';
+import { AlertaError } from '../../componentes/Alertas/AlertaError';
+import { AlertaConfirmar } from '../../componentes/Alertas/AlertaConfirmar';
+
 
 // Modo oscuro
 import ModoOscuro from '../../componentes/Globales/Modo Oscuro/ModoOscuro';
 
 // Contexto de la sesión activa
 import { Sesion } from '../../App';
+import { Alertas } from '../../App';
 
 export const ActualizarDatos = React.createContext();
 
@@ -22,16 +26,24 @@ export function Ofertas() {
   const [botonMostrar, setBotonMostrar] = useState(false); // Estado para mostrar el botón
 
   const [actualizar, setActualizar] = useState(false);
+  const {alerta} = useContext(Alertas)
+
 
   useEffect(() => {
     async function fetchData() {
       setCargando(true);
       try {
-        console.log('Estamos listando ofertas');
+        // console.log('Estamos listando ofertas');
         const documentos = await ListarOfertas();
         await new Promise(resolve => setTimeout(resolve, 2000));
-        console.log('Soy doc', documentos.habitaciones);
+        // console.log('Soy doc m',documentos.mensaje)
+        // console.log('Soy doc h', documentos.habitaciones);
         setOfertas(documentos.habitaciones);
+
+        if(documentos.mensaje === 'No hay habitaciones disponibles') {
+          setOfertas(documentos.mensaje);
+          // console.log('entramos')
+        }
         setActualizar(false);
         setBotonMostrar(true); // Mostrar el botón después de cargar las ofertas
       } catch (error) {
@@ -58,19 +70,32 @@ export function Ofertas() {
               </div>
             </div>
 
-            <ActualizarDatos.Provider value={{setActualizar}}>
-              {/* Agregar ofertas */}
-              {sesionActiva === 2 && botonMostrar && (
-                <AgregarOfertas />
-              )}
+            <>
+              <ActualizarDatos.Provider value={{setActualizar}}>
+                {/* Agregar ofertas */}
+                {sesionActiva === 2 && botonMostrar && (
+                  <AgregarOfertas />
+                )}
 
-              {/* Renderizado Ofertas */}
-              {cargando || !ofertas ? (
-                <Loader />
-              ) : (
-                <RenderOfertas ofertas={ofertas} />
-              )}
-            </ActualizarDatos.Provider>
+                {/* Renderizado Ofertas */}
+                {cargando || !ofertas ? (
+                  <Loader />
+                ) : (
+                  <RenderOfertas ofertas={ofertas} />
+                )}
+
+                {/* Mostrar Alertas */}
+                {alerta === 1 ?
+                  <AlertaExito/>
+                  : alerta === 2 ?
+                  <AlertaError/>
+                  : alerta === 3 ?
+                  <AlertaConfirmar/>
+                  : null
+                }
+              </ActualizarDatos.Provider>
+            </>
+            
           </>
         )}
       </ModoOscuro>

@@ -3,6 +3,7 @@ import ModoOscuro from "../Globales/Modo Oscuro/ModoOscuro"
 
 import { Sesion } from "../../App";
 import { EditarOfertas } from "./CRUD/EditarOfertas";
+import { EliminarOfertas } from "./CRUD/EliminarOfertas";
 import { ContextAgregarOfertas } from "./CRUD/AgregarOfertas";
 import { ContextEditarOfertas } from "./CRUD/EditarOfertas";
 
@@ -19,9 +20,9 @@ export function RenderOfertas({ofertas}) {
     return(
         <ModoOscuro>
             {(isDarkMode) => (
-                ofertas.length === 0 ? 
+                ofertas === 'No hay habitaciones disponibles' ? 
                 <div className={`py-20 flex justify-center items-center ${isDarkMode ? 'text-white' : 'text-black'}`}>
-                    <h2 className="text-xl">No Hay Ofertas Disponibles</h2>
+                    <h2 className="text-xl">No hay Ofertas Disponibles </h2>
                 </div>
                 :
                 <div className='grid grid-cols-1 gap-14 py-20 xl:grid-cols-2 xl:px-20'>
@@ -37,7 +38,7 @@ export function RenderOfertas({ofertas}) {
                                 <p className='text-center'>{oferta.descripcion}</p>
                                 {sesionActiva===2?
                                     <div className={`flex flex-row gap-3 justify-around items-center w-full`}>
-                                        <button className={`p-2 font-light bg-[#aa170c] hover:!outline ${isDarkMode ? `` : ``} `}>BORRAR</button>
+                                        <EliminarOfertas id={oferta._id}/>
                                         <EditarOfertas id={oferta._id} />
                                     </div>    
                                 :null }

@@ -27,7 +27,7 @@ export function Clima() {
         } catch (error) {
             console.error(error);
         }
-        console.log(resultado);
+        // console.log(resultado);
 
         if (typeof filtro !== 'undefined' && typeof hora !== 'undefined') {
             // console.log('re1');

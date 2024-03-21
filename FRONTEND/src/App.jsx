@@ -13,7 +13,7 @@ import { Pago } from "./paginas/Pago/Pago";
 import { Clima } from "./componentes/Globales/Clima/Clima";
 import { Blog } from "./paginas/Blog/Blog";
 import ModoOscuro from "./componentes/Globales/Modo Oscuro/ModoOscuro";
-import BotonReservar from "./componentes/botones/BotonReservar"
+import {BotonReservar} from "./componentes/botones/BotonReservar"
 
 
 // REACT ROUTER
@@ -23,14 +23,22 @@ import { HabitacionesDetalles } from "./paginas/Habitaciones/HabitacionDetalles"
 
 export const Sesion = React.createContext();
 export const Mostrar = React.createContext();
+export const Alertas = React.createContext();
+
 
 export function App() {
     const [headerMostrar, setHeaderMostrar] = useState(true)
     const [botonRMostrar, setBotonRMostrar] = useState(true)
     const [pieMostrar, setPieMostrar] = useState(true)
     const [climaMostrar, setClimaMostrar] = useState(true)
+
     const [sesionActiva, setSesionActiva] = useState(2) //0 = nadie; 1 = cliente; 2 = admin;
     const [habitacion, setHabitacion] = useState({})
+
+    const [alerta, setAlerta] = useState(0)  //0 = ninguna ; 1 = exito ; 2 = error
+    const [mensaje, setMensaje] = useState("") 
+    const [borrar, setBorrar] = useState(false); 
+
 
     return (<>
         <Sesion.Provider value={{sesionActiva, setSesionActiva}}>
@@ -40,18 +48,20 @@ export function App() {
                 {(isDarkMode) => (
                     <main className={`min-h-[400px] md:min-h-[500px] lg:min-h-[350px] ${isDarkMode ? `bg-dark-blueClaro` : `bg-white`}`} >
                         <Mostrar.Provider value={{ setHeaderMostrar, setBotonRMostrar, setPieMostrar, setClimaMostrar }}>
-                            <Routes>
-                                <Route path="/" element={<Landing/>} />
-                                <Route path="/inicio" element={<Inicio/>} />
-                                <Route path="/ofertas" element={<Ofertas/>} />
-                                <Route path="/habitaciones" element={<Habitaciones setHabitacion={setHabitacion} />} />
-                                <Route path="/habitaciones/detalles" element={<HabitacionesDetalles habitacion={habitacion} />} />
-                                <Route path="/blog" element={<Blog/>} />
-                                <Route path="/pagos" element={<Pago/>} />
-                                <Route path="/contacto" element={<Contacto/>} />
-                                <Route path="/reservar" element={<Reservar/>} />
-                                <Route path="*" element={<Error/>} />
-                            </Routes>
+                            <Alertas.Provider value={{alerta, setAlerta, mensaje, setMensaje, borrar, setBorrar}}>
+                                <Routes>
+                                    <Route path="/" element={<Landing/>} />
+                                    <Route path="/inicio" element={<Inicio/>} />
+                                    <Route path="/ofertas" element={<Ofertas/>} />
+                                    <Route path="/habitaciones" element={<Habitaciones setHabitacion={setHabitacion} />} />
+                                    <Route path="/habitaciones/detalles" element={<HabitacionesDetalles habitacion={habitacion} />} />
+                                    <Route path="/blog" element={<Blog/>} />
+                                    <Route path="/pagos" element={<Pago/>} />
+                                    <Route path="/contacto" element={<Contacto/>} />
+                                    <Route path="/reservar" element={<Reservar/>} />
+                                    <Route path="*" element={<Error/>} />
+                                </Routes>
+                            </Alertas.Provider>
                         </Mostrar.Provider>
                     </main>
                 )}

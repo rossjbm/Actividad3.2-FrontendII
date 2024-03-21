@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap'; // Puedes usar la biblioteca React Bootstrap Modal
 
 import { IoCloseOutline } from "react-icons/io5";
 
 import ModoOscuro from '../../Globales/Modo Oscuro/ModoOscuro';
+
+import { ContextFiltrar } from '../../../paginas/Habitaciones/Habitaciones';
 
 const FiltroModal = () => {
   const [showModal, setShowModal] = useState(false); // Definimos showModal como un estado
@@ -11,6 +13,7 @@ const FiltroModal = () => {
   const [numPersonas, setNumPersonas] = useState(1);
   const [fechaLlegada, setFechaLlegada] = useState('');
   const [fechaSalida, setFechaSalida] = useState('');
+  const {setFiltrado, setCantidad} = useContext(ContextFiltrar)
 
   const handleFiltrarClick = () => {
     setShowModal(true);
@@ -30,6 +33,8 @@ const FiltroModal = () => {
 
   const handleFiltrar = () => {
     console.log('Filtrando habitaciones...');
+    setFiltrado(true)
+    setCantidad(numPersonas);
     setShowModal(false); // Cierra el modal después de filtrar
   };
 
@@ -42,9 +47,11 @@ const FiltroModal = () => {
       <ModoOscuro>
         {(isDarkMode) => (
           <>
-            <Button onClick={handleFiltrarClick} className={`w-1/2 h-14 md:w-2/6 mb-4 d-block mx-auto font-textos font-bold ${isDarkMode ? `text-white` : `text-black`}`} style={ isDarkMode ? { backgroundColor: '#04293a', borderColor: '#04293a', borderRadius: '0' } : { backgroundColor: '#5ecde0', borderColor: '#000', borderRadius: '0' }}>
-              Filtra por
-            </Button>
+            <div className={`flex flex-col justify-center items-center m-20 w-auto h-auto`}>
+              <Button onClick={handleFiltrarClick} className={`font-textos text-2xl border-2  rounded-none w-4/5 xl:w-3/5 py-2 ${isDarkMode ? `text-white bg-transparent border-white hover:!bg-gray-400`: `text-black border-black hover:bg-green-100`} `}>
+                Filtra por
+              </Button>
+            </div>
       
             <Modal show={showModal} onHide={handleModalClose} backdrop="static" centered data-bs-theme={isDarkMode ? "dark" : "light"} className={`bg-gray-400`}>
               <Modal.Header className={`${isDarkMode ? `bg-dark-greenMedio` : `bg-white`}`}>

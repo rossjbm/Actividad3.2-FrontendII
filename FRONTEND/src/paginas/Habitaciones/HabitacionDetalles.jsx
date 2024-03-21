@@ -108,9 +108,7 @@ export function HabitacionesDetalles({ habitacion }) {
               <>
                 <section>
                   <img
-                    src={
-                      "https://images.mirai.com/INFOROOMS/10030559/NzLXA8mGnfQhLUeZXSKJ/NzLXA8mGnfQhLUeZXSKJ_large.jpg"
-                    }
+                    src={habitacion.imagen_principal}
                     alt="Habitación"
                     className="h-[600px] object-cover w-full mt-40"
                   />
@@ -144,7 +142,7 @@ export function HabitacionesDetalles({ habitacion }) {
                               ? `text-white`
                               : `text-black `
                           }`}>
-                          Número de Personas: <b>{habitacion.cantidad}{" "}</b>
+                          Número de Personas: <b>{habitacion.personas}{" "}</b>
                         </p>
                       </div>
 

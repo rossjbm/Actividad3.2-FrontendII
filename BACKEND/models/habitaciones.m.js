@@ -21,7 +21,10 @@ const habitacionesSchema = new mongoose.Schema(
         },
         disponible: {
             type: String,
-            default: "Reservado"
+            default: "Disponible"
+        },
+        imagen_principal: {
+            type: String,
         }        
     },
     {

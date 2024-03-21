@@ -7,6 +7,7 @@ import { FormEditar } from "../Formularios/FormEditar.o";
 import ModoOscuro from "../../Globales/Modo Oscuro/ModoOscuro";
 
 import { ActualizarDatos } from "../../../paginas/Ofertas/Ofertas";
+import { Alertas } from "../../../App";
 
 export const ContextEditarOfertas = React.createContext();
 
@@ -21,6 +22,7 @@ export function EditarOfertas({id}) {
     });
 
     const { setActualizar } = useContext(ActualizarDatos)
+    const {setAlerta, setMensaje} = useContext(Alertas)
 
     const handleInputChange = (e) => {
         setEditadaOferta({ ...editadaOferta, [e.target.name]: e.target.value})
@@ -37,11 +39,11 @@ export function EditarOfertas({id}) {
 
     const Obtener = async (e) => {
         e.preventDefault();
-        console.log(id)
+        // console.log(id)
         try {
             const documentos = await ListarOfertas();
             const editar = documentos.habitaciones.find(d => d._id === id)
-            console.log(editar)
+            // console.log(editar)
             return setEditadaOferta(editar)
         } catch (error) {
             console.log("Error:", error)
@@ -51,21 +53,26 @@ export function EditarOfertas({id}) {
     
     const Editar = async (e) => {
         e.preventDefault();
-        console.log('soy Editada oferta', editadaOferta);
+        // console.log('soy Editada oferta', editadaOferta);
         
         try {  
             const enviado = await EditOfertas(editadaOferta, id)
-            console.log(enviado)
+            // console.log(enviado)
             setEditadaOferta({
                 titulo: "",
                 descripcion:"",
                 fecha_expiracion: "",
                 image: ""
             });
+            setMensaje('La oferta de ha editado correctamente.')
+            setAlerta(1)
             setActualizar(true);
             
         } catch (error) {
-            console.log('error', error)
+            console.log('soy error en oferta', error)
+            
+            setMensaje(error)
+            setAlerta(2)
         }
     };
 

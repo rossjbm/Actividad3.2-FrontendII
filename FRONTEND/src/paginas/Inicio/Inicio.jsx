@@ -4,19 +4,37 @@ import { Link } from 'react-router-dom';
 import ModoOscuro from '../../componentes/Globales/Modo Oscuro/ModoOscuro';
 import { ServicioCarrusel } from '../../componentes/Inicio/ServicioCarrusel';
 import { Horarios } from '../../componentes/Inicio/Horarios';
-import ofertasData from '../../data/Ofertas.json';
+import { ListarOfertas } from '../../funciones/Fetch/Ofertas/ListarOfertas';
 import Loader from '../../componentes/Globales/Loader/Loader';
 
 export function Inicio() {
-  const [oferta, setOferta] = useState(ofertasData[1]);
+  const [oferta, setOferta] = useState();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simula una carga de datos
+    async function fetchData() {
+      try {
+        const documentos = await ListarOfertas();
+        setOferta(documentos.habitaciones[1]);
+        console.log('buscando oferta')
+        if(documentos.mensaje === 'No hay habitaciones disponibles') {
+          setOferta(documentos.mensaje);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchData();
     setTimeout(() => {
       setLoading(false);
-    }, 1000); // Simula una carga de 1 segundos
+    }, 1000);
   }, []);
+
+  const fechaExacta = ((fecha) => {
+    let fechaNueva = new Date(fecha);
+    let fechaFormateada = fechaNueva.toLocaleDateString();
+    return fechaFormateada
+  })  
 
   return (
     <>
@@ -70,11 +88,11 @@ export function Inicio() {
             </div>
 
             <div className="h-[400px] md:h-[500px] relative ">
-              <img src={oferta.imagen} alt="" className="w-full h-full object-cover" />
+              <img src={`http://localhost:3000/images/${oferta.imagen}`} alt={oferta.titulo} className="w-full h-full object-cover" />
               <div className='flex md:justify-start md:items-center h-full justify-end items-end absolute z-10 top-0 md:ml-6'>
-                <div className={`md:flex flex-col md:w-3/5  justify-center p-4 gap-5 ${isDarkMode ? 'dark:text-white bg-dark-greenMedio' : 'bg-white text-black'}`}>
-                  <h5 className="font-textos text-xl font-semibold">{oferta.nombre}</h5>
-                  <p className={`font-textos p-2 ${isDarkMode ? 'dark:text-white bg-dark-blueClaro' : 'bg-blue-200 text-black'}`}>Disponible hasta: {oferta.limite}</p>
+                <div className={`md:flex flex-col md:w-1/2  justify-center p-4 gap-5 ${isDarkMode ? 'dark:text-white bg-dark-greenMedio' : 'bg-white text-black'}`}>
+                  <h5 className="font-textos text-xl font-semibold">{oferta.titulo}</h5>
+                  <p className={`font-textos p-2 ${isDarkMode ? 'dark:text-white bg-dark-blueClaro' : 'bg-blue-200 text-black'}`}>Disponible hasta: {fechaExacta(oferta.fecha_expiracion)}</p>
                   <p className="font-textos text-base">{oferta.descripcion}</p>
                 </div>
               </div>
