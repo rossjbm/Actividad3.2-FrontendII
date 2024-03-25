@@ -41,6 +41,7 @@ export default {
         'landingFondo1': "url('/src/assets/fondoHotel1.jpg')",
         'bgFondo1': "url('/src/assets/fondoHotel2.jpg')",
         'bgFondo2': "url('/src/assets/fondoHotel3.jpg')",
+        'FondoDeHotel1': "url('src/assets/Acceder/image.png')",
       },
     },
   },

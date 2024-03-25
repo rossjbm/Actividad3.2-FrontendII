@@ -12,6 +12,7 @@ const habitacionesRouter = require('./routes/habitaciones.r');
 const ofertasRouter = require('./routes/ofertas.r');
 const reservasRouter = require('./routes/reservas.r');
 const comentariosRouter = require('./routes/comentarios.r');
+const accederRouter = require('./routes/acceder')
 
 var app = express();
 
@@ -36,6 +37,7 @@ app.use('/habitaciones', habitacionesRouter);
 app.use('/ofertas', ofertasRouter);
 app.use('/reservas', reservasRouter);
 app.use('/comentarios', comentariosRouter);
+app.use('/acceder', accederRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

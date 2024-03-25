@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { Inicio } from "./paginas/Inicio/Inicio";
 import { Landing } from "./paginas/Landing/Landing";
@@ -14,12 +14,14 @@ import { Clima } from "./componentes/Globales/Clima/Clima";
 import { Blog } from "./paginas/Blog/Blog";
 import ModoOscuro from "./componentes/Globales/Modo Oscuro/ModoOscuro";
 import {BotonReservar} from "./componentes/botones/BotonReservar"
+import { Acceder } from "./paginas/Acceder/Acceder";
 
 
 // REACT ROUTER
 import { Routes, Route} from "react-router-dom";
 import { useState, useContext } from "react";
 import { HabitacionesDetalles } from "./paginas/Habitaciones/HabitacionDetalles";
+import { DecodificarToken } from "./funciones/Fetch/Acceder/ControlarToken";
 
 export const Sesion = React.createContext();
 export const Mostrar = React.createContext();
@@ -32,13 +34,16 @@ export function App() {
     const [pieMostrar, setPieMostrar] = useState(true)
     const [climaMostrar, setClimaMostrar] = useState(true)
 
-    const [sesionActiva, setSesionActiva] = useState(2) //0 = nadie; 1 = cliente; 2 = admin;
+    const [sesionActiva, setSesionActiva] = useState(0) //0 = nadie; 1 = cliente; 2 = admin;
     const [habitacion, setHabitacion] = useState({})
 
     const [alerta, setAlerta] = useState(0)  //0 = ninguna ; 1 = exito ; 2 = error
     const [mensaje, setMensaje] = useState("") 
     const [borrar, setBorrar] = useState(false); 
 
+    useEffect(()=>{
+        setSesionActiva(DecodificarToken())
+    })
 
     return (<>
         <Sesion.Provider value={{sesionActiva, setSesionActiva}}>
@@ -52,6 +57,7 @@ export function App() {
                                 <Routes>
                                     <Route path="/" element={<Landing/>} />
                                     <Route path="/inicio" element={<Inicio/>} />
+                                    <Route path="/acceder" element={<Acceder/>} />
                                     <Route path="/ofertas" element={<Ofertas/>} />
                                     <Route path="/habitaciones" element={<Habitaciones setHabitacion={setHabitacion} />} />
                                     <Route path="/habitaciones/detalles" element={<HabitacionesDetalles habitacion={habitacion} />} />

@@ -32,7 +32,7 @@ export function Encabezado() {
                                             <NavLink to={`/inicio`} className={({isActive}) => (isActive ? `font-bold border-b-2 p-2 no-underline  ${isDarkMode ? 'text-white border-dark-greenClaro' : 'text-black border-blue-200'}` : `no-underline ${isDarkMode ? 'text-white' : 'text-black'}`)} >Inicio</NavLink>
                                         </li>
                                         <li className="hidden lg:inline-block">
-                                            <NavLink to={`/cerrar`} className={({isActive}) => (isActive ? `font-bold border-b-2 p-2 no-underline  ${isDarkMode ? 'text-white border-dark-greenClaro' : 'text-black border-blue-200'}` : `no-underline ${isDarkMode ? 'text-white' : 'text-black'}`)} >Cerrar Sesión</NavLink>
+                                            <NavLink to={`/acceder`} className={({isActive}) => (isActive ? `font-bold border-b-2 p-2 no-underline  ${isDarkMode ? 'text-white border-dark-greenClaro' : 'text-black border-blue-200'}` : `no-underline ${isDarkMode ? 'text-white' : 'text-black'}`)} >Cerrar Sesión</NavLink>
                                         </li>
                                         {sesionActiva === 1 ?
                                             <li className="hidden md:inline-block">
